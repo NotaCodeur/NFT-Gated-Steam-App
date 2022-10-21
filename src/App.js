@@ -5,7 +5,7 @@ import Homepage from './pages/Homepage';
 import WalletTest from './pages/WalletTest';
 import { Switch, Route, Link } from 'react-router-dom';
 import { Layout, Typography, Space, Col } from 'antd';
-
+import ScrollToTop from './functions/ScrollToTop';
 
 // import stuff from the Cardano React wallet connector Github Clone
 import { Tab, Tabs, RadioGroup, Radio, FormGroup, InputGroup, NumericInput } from "@blueprintjs/core";
@@ -122,58 +122,58 @@ function App() {
                 return { ...stateTwo, whichWalletSelected: action.payload };
 
             case 'setwalletFound':
-                console.log('dispatch walletFound, action.payload :', action.payload)
+                // console.log('dispatch walletFound, action.payload :', action.payload)
                 return { ...stateTwo, walletFound: action.payload };
 
             case 'setwalletIsEnabled':
-                console.log('dispatch walletIsEnabled, action.payload :', action.payload)
+                // console.log('dispatch walletIsEnabled, action.payload :', action.payload)
                 return { ...stateTwo, walletIsEnabled: action.payload };
 
             case 'setwalletName':
-                console.log('dispatch walletName, action.payload :', action.payload)
+                // console.log('dispatch walletName, action.payload :', action.payload)
                 return { ...stateTwo, walletName: action.payload };
 
             case 'setwalletIcon':
-                console.log('dispatch walletIcon, action.payload :', action.payload)
+                // console.log('dispatch walletIcon, action.payload :', action.payload)
                 return { ...stateTwo, walletIcon: action.payload };
 
             case 'setwalletAPIVersion':
-                console.log('dispatch walletAPIVersion, action.payload :', action.payload)
+                // console.log('dispatch walletAPIVersion, action.payload :', action.payload)
                 return { ...stateTwo, walletAPIVersion: action.payload };
 
             case 'setwallets':
-                console.log('dispatch wallets, action.payload :', action.payload)
+                // console.log('dispatch wallets, action.payload :', action.payload)
                 return { ...stateTwo, wallets: action.payload };
 
 
 
 
             case 'setnetworkId':
-                console.log('dispatch networkId, action.payload :', action.payload)
+                // console.log('dispatch networkId, action.payload :', action.payload)
                 return { ...stateTwo, networkId: action.payload };
 
             case 'setUtxos':
-                console.log('dispatch Utxos, action.payload :', action.payload)
+                // console.log('dispatch Utxos, action.payload :', action.payload)
                 return { ...stateTwo, Utxos: action.payload };
 
             case 'setCollatUtxos':
-                console.log('dispatch CollatUtxos, action.payload :', action.payload)
+                // console.log('dispatch CollatUtxos, action.payload :', action.payload)
                 return { ...stateTwo, CollatUtxos: action.payload };
 
             case 'setbalance':
-                console.log('dispatch balance, action.payload :', action.payload)
+                // console.log('dispatch balance, action.payload :', action.payload)
                 return { ...stateTwo, balance: action.payload };
 
             case 'setchangeAddress':
-                console.log('dispatch changeAddress, action.payload :', action.payload)
+                // console.log('dispatch changeAddress, action.payload :', action.payload)
                 return { ...stateTwo, changeAddress: action.payload };
 
             case 'setrewardAddress':
-                console.log('dispatch rewardAddress, action.payload :', action.payload)
+                // console.log('dispatch rewardAddress, action.payload :', action.payload)
                 return { ...stateTwo, rewardAddress: action.payload };
 
             case 'setusedAddress':
-                console.log('dispatch usedAddress, action.payload :', action.payload)
+                // console.log('dispatch usedAddress, action.payload :', action.payload)
                 return { ...stateTwo, usedAddress: action.payload };
 
 
@@ -181,19 +181,19 @@ function App() {
 
 
             case 'settxBody':
-                console.log('dispatch txBody, action.payload :', action.payload)
+                // console.log('dispatch txBody, action.payload :', action.payload)
                 return { ...stateTwo, txBody: action.payload };
 
             case 'settxBodyCborHex_unsigned':
-                console.log('dispatch txBodyCborHex_unsigned, action.payload :', action.payload)
+                // console.log('dispatch txBodyCborHex_unsigned, action.payload :', action.payload)
                 return { ...stateTwo, txBodyCborHex_unsigned: action.payload };
 
             case 'settxBodyCborHex_signed':
-                console.log('dispatch txBodyCborHex_signed, action.payload :', action.payload)
+                // console.log('dispatch txBodyCborHex_signed, action.payload :', action.payload)
                 return { ...stateTwo, txBodyCborHex_signed: action.payload };
 
             case 'setsubmittedTxHash':
-                console.log('dispatch submittedTxHash, action.payload :', action.payload)
+                // console.log('dispatch submittedTxHash, action.payload :', action.payload)
                 return { ...stateTwo, submittedTxHash: action.payload };
 
 
@@ -201,58 +201,64 @@ function App() {
 
 
             case 'setaddressBech32SendADA':
-                console.log('dispatch addressBech32SendADA, action.payload :', action.payload)
+                // console.log('dispatch addressBech32SendADA, action.payload :', action.payload)
                 return { ...stateTwo, addressBech32SendADA: action.payload };
 
             case 'setlovelaceToSend':
-                console.log('dispatch lovelaceToSend, action.payload :', action.payload)
+                // console.log('dispatch lovelaceToSend, action.payload :', action.payload)
                 return { ...stateTwo, lovelaceToSend: action.payload };
 
             case 'setassetNameHex':
-                console.log('dispatch assetNameHex, action.payload :', action.payload)
+                // console.log('dispatch assetNameHex, action.payload :', action.payload)
                 return { ...stateTwo, assetNameHex: action.payload };
 
             case 'setassetPolicyIdHex':
-                console.log('dispatch assetPolicyIdHex, action.payload :', action.payload)
+                // console.log('dispatch assetPolicyIdHex, action.payload :', action.payload)
                 return { ...stateTwo, assetPolicyIdHex: action.payload };
 
             case 'setassetAmountToSend':
-                console.log('dispatch assetAmountToSend, action.payload :', action.payload)
+                // console.log('dispatch assetAmountToSend, action.payload :', action.payload)
                 return { ...stateTwo, assetAmountToSend: action.payload };
 
             case 'setaddressScriptBech32':
-                console.log('dispatch addressScriptBech32, action.payload :', action.payload)
+                // console.log('dispatch addressScriptBech32, action.payload :', action.payload)
                 return { ...stateTwo, addressScriptBech32: action.payload };
 
             case 'setdatumStr':
-                console.log('dispatch datumStr, action.payload :', action.payload)
+                // console.log('dispatch datumStr, action.payload :', action.payload)
                 return { ...stateTwo, datumStr: action.payload };
 
             case 'setplutusScriptCborHex':
-                console.log('dispatch plutusScriptCborHex, action.payload :', action.payload)
+                // console.log('dispatch plutusScriptCborHex, action.payload :', action.payload)
                 return { ...stateTwo, plutusScriptCborHex: action.payload };
 
             case 'settransactionIdLocked':
-                console.log('dispatch transactionIdLocked, action.payload :', action.payload)
+                // console.log('dispatch transactionIdLocked, action.payload :', action.payload)
                 return { ...stateTwo, transactionIdLocked: action.payload };
 
             case 'settransactionIndxLocked':
-                console.log('dispatch transactionIndxLocked, action.payload :', action.payload)
+                // console.log('dispatch transactionIndxLocked, action.payload :', action.payload)
                 return { ...stateTwo, transactionIndxLocked: action.payload };
 
             case 'setlovelaceLocked':
-                console.log('dispatch lovelaceLocked, action.payload :', action.payload)
+                // console.log('dispatch lovelaceLocked, action.payload :', action.payload)
                 return { ...stateTwo, lovelaceLocked: action.payload };
 
             case 'setmanualFee':
-                console.log('dispatch manualFee, action.payload :', action.payload)
+                // console.log('dispatch manualFee, action.payload :', action.payload)
                 return { ...stateTwo, manualFee: action.payload };
 
 
             case 'replaceall':
 
-                console.log('dispatch replaceall, action.payload :', action.payload)
+                // console.log('dispatch replaceall, action.payload :', action.payload)
                 return { ...stateTwo, ...action.payload }
+
+            case 'setHasNFT':
+                console.log('dispatch setUserHasNFT', action.payload);
+                return { ...stateTwo, hasNFT: action.payload }
+
+
             default:
                 throw new Error();
         }
@@ -293,6 +299,8 @@ function App() {
         transactionIndxLocked: 0,
         lovelaceLocked: 3000000,
         manualFee: 900000,
+
+        hasNFT: false,
     })
 
     const [state, dispatch] = useReducer(reducer, {
@@ -300,10 +308,10 @@ function App() {
         reload: false
     })
 
-    useEffect(() => {
-        // dispatch({type: 'setRefs', payload: {'roadmap': roadmap, 'art': art, 'team': team, 'faq': faq}})
-        console.log('state: ', state)
-    }, [state])
+    // useEffect(() => {
+    //     // dispatch({type: 'setRefs', payload: {'roadmap': roadmap, 'art': art, 'team': team, 'faq': faq}})
+    //     console.log('state: ', state)
+    // }, [state])
 
     /**
      * When the wallet is connect it returns the connector which is
@@ -382,7 +390,7 @@ function App() {
             type: 'setwhichWalletSelected',
             payload: wallets[0]
         })
-        
+
     }
 
 
@@ -403,10 +411,9 @@ function App() {
     const handleTabId = (tabId) => dispatchTwo({ type: "setselectedTabId", payload: tabId })
 
 
-
     /**
-     * Generate address from the plutus contract cborhex
-     */
+       * Generate address from the plutus contract cborhex
+       */
     const generateScriptAddress = () => {
         // cborhex of the alwayssucceeds.plutus
         // const cborhex = "4e4d01000033222220051200120011";
@@ -445,15 +452,15 @@ function App() {
 
     const checkIfWalletFound = () => {
         console.log('checkIfWalletFound()')
-        console.log('window.cardano :', window.cardano)
-        console.log('stateTwo.whichWalletSelected :', stateTwo.whichWalletSelected)
+        // console.log('window.cardano :', window.cardano)
+        // console.log('stateTwo.whichWalletSelected :', stateTwo.whichWalletSelected)
         const walletKey = stateTwo.whichWalletSelected;
-        console.log('window?.cardano. hasOwnProperty: ', !!window?.cardano?.[walletKey])
+        // console.log('window?.cardano. hasOwnProperty: ', !!window?.cardano?.[walletKey])
         const walletString = walletKey.toString()
 
-        console.log('walletKey.toString(): ', walletString)
+        // console.log('walletKey.toString(): ', walletString)
         const walletFound = !!window?.cardano?.[walletString];
-        console.log('walletFound :', walletFound)
+        // console.log('walletFound :', walletFound)
 
         dispatchTwo({ type: 'setwalletFound', payload: walletFound })
         //  this.setState({walletFound})
@@ -472,9 +479,12 @@ function App() {
         try {
             const walletName = stateTwo.whichWalletSelected;
             console.log('walletName: ', walletName)
+            console.log('stateTwo: ', stateTwo)
             walletIsEnabled = await window.cardano[walletName].isEnabled();
         } catch (err) {
             console.log(err)
+            console.log(' window.cardano[stateTwo.whichWalletSelected]: ', window.cardano[stateTwo.whichWalletSelected])
+            console.log('stateTwo: ', stateTwo)
         }
         dispatchTwo({ type: 'setwalletIsEnabled', payload: walletIsEnabled })
         //  this.setState({walletIsEnabled});
@@ -496,6 +506,7 @@ function App() {
         try {
             API = await window.cardano[walletKey].enable();
         } catch (err) {
+            console.log('window.cardano[walletSelected].enable() failed :');
             console.log(err);
         }
         return checkIfWalletEnabled();
@@ -611,6 +622,18 @@ function App() {
                 // console.log(`utxo: ${str}`)
             }
             dispatchTwo({ type: 'setUtxos', payload: Utxos })
+
+
+
+
+
+
+
+
+
+
+
+
             // this.setState({ Utxos })
         } catch (err) {
             console.log(err)
@@ -726,6 +749,7 @@ function App() {
             console.log(err)
         }
     }
+
 
     /**
      * Refresh all the data from the user's wallet
@@ -860,19 +884,19 @@ function App() {
     }, [])
 
 
-    useEffect(() => {
-        // pollWallets();
-        // refreshData();
-        console.log('useEffect stateTwo', stateTwo)
-        // console.log('useEffect stateTwo.whichWalletSelected', stateTwo.whichWalletSelected)
+    // useEffect(() => {
+    //     // pollWallets();
+    //     // refreshData();
+    //     console.log('useEffect stateTwo', stateTwo)
+    //     // console.log('useEffect stateTwo.whichWalletSelected', stateTwo.whichWalletSelected)
 
-    }, [stateTwo])
+    // }, [stateTwo])
 
     useEffect(() => {
         console.log('useEffect state.reload', state.reload);
         if (state.reload === true) {
-            refreshData();
             dispatch({ type: 'reload', payload: false })
+            refreshData();
         }
 
         return () => {
@@ -880,6 +904,30 @@ function App() {
             }
         }
     }, [state.reload])
+
+
+
+    useEffect(() => {
+
+        // if we have Utxos then wallet is connected
+        // check if those Utxos contain an NFT here and set app access true or false
+        let userHasNFT = false;
+        if (stateTwo.Utxos?.length) {
+            console.log('Utxos: ', stateTwo.Utxos)
+            stateTwo.Utxos?.map((Utxo) => {
+                console.log('Utxo in map: ', Utxo)
+                if (Utxo?.multiAssetStr?.includes('NMKR')) {
+                    console.log('Utxo includes NMKR Yay!, set hasNFT to true')
+                    userHasNFT = true
+                }
+            })
+        }
+        if (stateTwo.hasNFT !== userHasNFT) {
+
+            dispatchTwo({ type: 'setHasNFT', payload: userHasNFT })
+        }
+
+    }, [stateTwo.Utxos])
 
 
     // componentDidMount() {
@@ -897,15 +945,19 @@ function App() {
 
             <div className='main'>
                 <Layout>
-                    <div style={{ background: '#f1f2f6' }} className='routes'>
-                        <Switch>
-                            <Route exact path='/'>
-                                <Homepage state={state} dispatch={dispatch} stateTwo={stateTwo} dispatchTwo={dispatchTwo} />
-                            </Route>
-                            <Route exact path='/app'>
-                                <WalletTest />
-                            </Route>
-                        </Switch>
+                    <div style={{  }} className='routes'>
+
+                        <ScrollToTop>
+
+                            <Switch>
+                                <Route exact path='/'>
+                                    <Homepage state={state} dispatch={dispatch} stateTwo={stateTwo} dispatchTwo={dispatchTwo} />
+                                </Route>
+                                <Route exact path='/app'>
+                                    <WalletTest />
+                                </Route>
+                            </Switch>
+                        </ScrollToTop>
                     </div>
                 </Layout>
 

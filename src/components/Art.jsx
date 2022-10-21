@@ -137,7 +137,7 @@ const Art = ({ state, dispatch }) => {
                         {image.name}
                       </Title>
                       <br />
-                      <Button alignItems='center' justify='center' align='middle' size='large' block={true} onClick={() => window.open(image.buyLink)} target="_blank" style={{ borderRadius: 60, padding: 10, height: 'auto' }}>
+                      <Button justify='center' align='middle' size='large' block={true} onClick={() => window.open(image.buyLink)} target="_blank" style={{ borderRadius: 60, padding: 10, height: 'auto' }}>
                         <div>
                           <Space>
 

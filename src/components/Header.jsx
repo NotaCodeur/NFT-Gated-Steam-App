@@ -95,77 +95,333 @@ const HeaderSection = ({ state, dispatch, stateTwo, dispatchTwo }) => {
     );
 
 
+
+    const menuNoWallet = (
+        <Menu
+            className='selectWalletMenu'
+            align='center'
+            style={{
+                marginTop: 10,
+                marginRight: 0,
+                borderRadius: 10,
+                // background: 'rgba(255, 255, 255, 0.09)',
+                background: 'rgba(255, 255, 255, 0.189)',
+                /* border-radius: 16px; */
+                // boxShadow: 0 4px 30px rgba(0, 0, 0, 0.1),
+                // backdropFilter: `blur(6px)`,
+                // webkitBackdropFilter: `blur(6px)`,
+                // border: 1px solid rgba(255, 255, 255, 0.64)
+            }}
+            items={[
+                {
+                    label: <a
+                        className='connectWalletMenuItem'
+                        href="https://namiwallet.io/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >Nami</a>,
+                    key: '0',
+                },
+                {
+                    label: <a
+                        className='connectWalletMenuItem'
+                        href="https://flint-wallet.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >Flint</a>,
+                    key: '1',
+                },
+                {
+                    label: <a
+                        className='connectWalletMenuItem'
+                        href="https://eternl.io/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >Eternl</a>,
+                    key: '2',
+                },
+                {
+                    label: <a
+                        className='connectWalletMenuItem'
+                        href="https://gerowallet.io/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >Gero</a>,
+                    key: '3',
+                }
+            ]}
+        />
+    );
+
+
+
+    function WalletsMenu({ stateTwo }) {
+
+        let items = []
+
+        stateTwo?.wallets?.forEach((wallet, index) => {
+            if (stateTwo?.whichWalletSelected === wallet) {
+                items.push({
+                    label: <p
+                        className='connectWalletMenuItem'
+                        onClick={(e) => {
+                            console.log('stateTwo.whichWalletSelected === wallet')
+                            dispatch({ type: 'reload', payload: true });
+                        }}
+                    >{wallet}</p>
+                })
+            }
+
+            else if (wallet !== stateTwo?.whichWalletSelected) {
+                items.push({
+                    label: <p
+                        className='connectWalletMenuItem'
+                        onClick={(e) => {
+                            console.log('wallet !== stateTwo?.whichWalletSelected')
+                            dispatchTwo({ type: 'setwhichWalletSelected', payload: wallet });
+                        }}
+                    >{wallet}</p>
+                })
+            }
+        })
+
+        const menuu = (<Menu
+            className='selectWalletMenu'
+            align='center'
+            style={{
+                marginTop: 10,
+                marginRight: 0,
+                borderRadius: 10,
+                // background: 'rgba(255, 255, 255, 0.09)',
+                background: 'rgba(255, 255, 255, 0.189)',
+                /* border-radius: 16px; */
+                // boxShadow: 0 4px 30px rgba(0, 0, 0, 0.1),
+                // backdropFilter: `blur(6px)`,
+                // webkitBackdropFilter: `blur(6px)`,
+                // border: 1px solid rgba(255, 255, 255, 0.64)
+            }}
+            items={items}
+
+        />)
+
+        return (
+            <Dropdown overlay={menuu} placement="bottomRight">
+                <div className='connectWalletButton' style={{}}>
+
+                    <Space >
+                        <p className='connectWalletButtonText'>
+                            Wallet
+                        </p>
+                        <DownOutlined />
+                    </Space>
+                </div>
+            </Dropdown>
+
+        )
+    }
+
+
+    function WalletsMenuIcon({ stateTwo }) {
+
+        let items = []
+
+        stateTwo?.wallets?.forEach((wallet, index) => {
+            if (stateTwo.whichWalletSelected === wallet) {
+                items.push({
+                    label: <p
+                        className='connectWalletMenuItem'
+                        onClick={(e) => {
+                            console.log('stateTwo.whichWalletSelected === wallet')
+                            dispatch({ type: 'reload', payload: true });
+                        }}
+                    >{wallet}</p>
+                })
+            }
+
+            else if (wallet !== stateTwo?.whichWalletSelected) {
+                items.push({
+                    label: <p
+                        className='connectWalletMenuItem'
+                        onClick={(e) => {
+                            console.log('wallet !== stateTwo?.whichWalletSelected')
+                            dispatchTwo({ type: 'setwhichWalletSelected', payload: wallet });
+                        }}
+                    >{wallet}</p>
+                })
+            }
+        })
+
+        const menuu = (<Menu
+            className='selectWalletMenu'
+            align='center'
+            style={{
+                marginTop: 10,
+                marginRight: 0,
+                borderRadius: 10,
+                // background: 'rgba(255, 255, 255, 0.09)',
+                background: 'rgba(255, 255, 255, 0.189)',
+                /* border-radius: 16px; */
+                // boxShadow: 0 4px 30px rgba(0, 0, 0, 0.1),
+                // backdropFilter: `blur(6px)`,
+                // webkitBackdropFilter: `blur(6px)`,
+                // border: 1px solid rgba(255, 255, 255, 0.64)
+            }}
+            items={items}
+
+        />)
+
+        return (
+            <Dropdown overlay={menuu} placement="bottomRight">
+                <div className='connectWalletButton' style={{}}>
+
+                    <Space >
+                        <img className='walletIcon' src={window.cardano[stateTwo?.whichWalletSelected].icon} alt="Walletlogo" />
+                        <DownOutlined />
+
+                    </Space>
+                </div>
+            </Dropdown>
+
+        )
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // this is used to generate the menu for the wallet connection button on the top of the page
     // if there is no wallet found 
     // => show a menu to install wallets
     // if there is a wallet found
     // => show a menu to connect a wallet 
     const walletMenu = () => {
+        console.log('wallet menu')
         let items = []
+
+
         if (stateTwo.wallets.length === 0) {
             console.log('wallet menu stateTwo.wallets.length === -1:', stateTwo.wallets.length)
             items = [
                 {
-                    label: <a href="https://namiwallet.io/" target="_blank" rel="noreferrer" >Nami</a>,
+                    label: <a
+                        className='connectWalletMenuItem'
+                        href="https://namiwallet.io/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >Nami</a>,
                     key: '0',
                 },
                 {
-                    label: <a href="https://flint-wallet.com/" target="_blank" rel="noreferrer" >Flint</a>,
+                    label: <a
+                        className='connectWalletMenuItem'
+                        href="https://flint-wallet.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >Flint</a>,
                     key: '1',
                 },
                 {
-                    label: <a href="https://eternl.io/" target="_blank" rel="noreferrer" >Eternl</a>,
+                    label: <a
+                        className='connectWalletMenuItem'
+                        href="https://eternl.io/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >Eternl</a>,
                     key: '2',
                 },
                 {
-                    label: <a href="https://gerowallet.io/" target="_blank" rel="noreferrer" >Gero</a>,
+                    label: <a
+                        className='connectWalletMenuItem'
+                        href="https://gerowallet.io/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >Gero</a>,
                     key: '3',
                 }
             ]
-        } else if (stateTwo.wallets.length === 1) {
+        }
+
+        else if (stateTwo.wallets.length === 1) {
             console.log('wallet menu stateTwo.wallets.length=== 1 :', stateTwo.wallets.length)
-            stateTwo?.wallets?.forEach((wallet, index) => items.push({
-                label: <a onClick={(e) => { dispatchTwo({ type: 'setwhichWalletSelected', payload: wallet }) }} >{wallet}</a>,
-                key: index,
-            }))
-        } else if (stateTwo.wallets.length >= 1) {
-            console.log('wallet menu stateTwo.wallets.length >= 1:', stateTwo.wallets.length)
             stateTwo?.wallets?.forEach((wallet, index) => items.push(
-                // <MenuItem className="no-border" key={index}>
-                //     <button
-                //         style={{ borderRadius: 20 }}
-                //         onClick={(e) => {
-
-                //             if (stateTwo.whichWalletSelected === wallet) {
-                //                 console.log('stateTwo.whichWalletSelected === wallet')
-                //                 dispatch({ type: 'reload', payload: true });
-                //             };
-
-                //             dispatchTwo({ type: 'setwhichWalletSelected', payload: wallet });
-                //         }} >{wallet}</button>
-                // </MenuItem>
-
-
                 {
-                    label: <a
-                        style={{ borderRadius: 10 }}
+                    label: <p
+                        className='connectWalletMenuItem'
                         onClick={(e) => {
-
-                            if (stateTwo.whichWalletSelected === wallet) {
-                                console.log('stateTwo.whichWalletSelected === wallet')
-                                dispatch({ type: 'reload', payload: true });
-                            };
-
-                            dispatchTwo({ type: 'setwhichWalletSelected', payload: wallet });
-                        }} >{wallet}</a>,
+                            dispatchTwo({ type: 'setwhichWalletSelected', payload: wallet })
+                        }} >{wallet}</p>,
                     key: index,
                 }
-
-
             ))
-        } else {
+        }
+
+        else if (stateTwo.wallets.length >= 1) {
+            console.log('wallet menu stateTwo.wallets.length >= 1:', stateTwo.wallets.length)
+            // stateTwo?.wallets?.forEach((wallet, index) => items.push(
+            //     {
+            //         label: <p
+            //             className='connectWalletMenuItem'
+            //             style={{ borderRadius: 10 }}
+            //             onClick={(e) => {
+
+            //                 if (stateTwo.whichWalletSelected === wallet) {
+            //                     console.log('stateTwo.whichWalletSelected === wallet')
+            //                     dispatch({ type: 'reload', payload: true });
+            //                 } else {
+            //                     // dispatchTwo({ type: 'setwhichWalletSelected', payload: wallet });
+            //                 }
+            //             }} >{wallet}</p>,
+            //         key: index,
+            //     }
+
+            // ))
+
+            stateTwo?.wallets?.forEach((wallet, index) => {
+                if (stateTwo.whichWalletSelected === wallet) {
+                    items.push({
+                        label: <p
+                            className='connectWalletMenuItem'
+                            onClick={(e) => {
+                                console.log('stateTwo.whichWalletSelected === wallet')
+                                dispatch({ type: 'reload', payload: true });
+                            }}
+                        >{wallet}</p>
+                    })
+                }
+
+                else if (wallet !== stateTwo?.whichWalletSelected) {
+                    items.push({
+                        label: <p
+                            className='connectWalletMenuItem'
+                            onClick={(e) => {
+                                console.log('wallet !== stateTwo?.whichWalletSelected')
+                                dispatchTwo({ type: 'setwhichWalletSelected', payload: wallet });
+                            }}
+                        >{wallet}</p>
+                    })
+                }
+            })
+
+
+        }
+
+        else {
             console.log('wallet menu else idunno what happend:', stateTwo.wallets.length)
         }
+
 
 
 
@@ -190,6 +446,30 @@ const HeaderSection = ({ state, dispatch, stateTwo, dispatchTwo }) => {
             />
         )
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     const scrollToSection = (elementRef) => {
         // console.log('elementRef', elementRef)
@@ -220,18 +500,75 @@ const HeaderSection = ({ state, dispatch, stateTwo, dispatchTwo }) => {
         //     />
         // </Header>
         <>
-            <div className='headerDiv' style={{ maxHeight: '15vh' }}>
-                <Row justify="center">
+            <div className='headerDiv'
+                // style={{ maxHeight: '15vh' }}
+            >
+                <Row justify="center" align='middle' style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                     <Col></Col>
                     <Col xs={22} sm={22} md={22} lg={20} xl={20}>
-                        <Row justify="space-between" align="middle">
+                        <Row justify="space-between" align="middle" style={{height: '100%'}}>
                             <Col >
                                 <Link to='/'>
-                                    <img src={WireframeLogoTransparent} className="logo" alt="logo" />
+                                    <h1 className='siteLogoTitle' >NFT Gate</h1>
+                                    {/* <img src={WireframeLogoTransparent} className="logo" alt="logo" /> */}
                                 </Link>
                             </Col>
                             <Col >
+
+
+
                                 <div style={{ height: '100%', alignContent: 'middle' }}>
+
+                                    <Row align='middle' justify='space-around' >
+                                        {
+                                            stateTwo.Utxos !== undefined && stateTwo.Utxos !== null ?
+
+                                                <WalletsMenuIcon stateTwo={stateTwo} />
+
+                                                :
+                                                stateTwo?.wallets?.length === 0 ?
+                                                    <Dropdown overlay={menuNoWallet} placement="bottomRight">
+                                                        <div className='connectWalletButton' style={{}}>
+
+                                                            <Space >
+                                                                <p className='connectWalletButtonText'>
+                                                                    Wallet
+                                                                </p>
+                                                                <DownOutlined />
+                                                            </Space>
+                                                        </div>
+                                                    </Dropdown>
+                                                    : stateTwo?.wallets?.length === 1 ?
+                                                        <div className='connectWalletButton' style={{}}>
+
+                                                            <Space >
+                                                                <p className='connectWalletButtonText'
+                                                                    onClick={(e) => {
+                                                                        console.log('stateTwo.whichWalletSelected === wallet')
+                                                                        dispatch({ type: 'reload', payload: true });
+                                                                    }}
+                                                                >
+                                                                    Wallet
+                                                                </p>
+                                                                {/* <DownOutlined /> */}
+                                                            </Space>
+                                                        </div>
+
+                                                        : stateTwo?.wallets?.length >= 1 ?
+                                                            <WalletsMenu stateTwo={stateTwo} />
+
+                                                            : null
+                                        }
+
+                                    </Row>
+
+
+                                </div>
+
+
+
+
+                                {/* <div style={{ height: '100%', alignContent: 'middle' }}>
                                     {activeMenu ? (
 
                                         <Row align='middle' justify='space-around' >
@@ -340,10 +677,22 @@ const HeaderSection = ({ state, dispatch, stateTwo, dispatchTwo }) => {
 
                                         ) : null
                                     }
-                                </div>
+                                </div> */}
+
+
+
+
+
+
                             </Col>
 
                         </Row>
+
+
+
+
+
+
                     </Col>
                     <Col xs={24} sm={24} md={24} lg={20} xl={20}>
                         <Row justify="end" >
