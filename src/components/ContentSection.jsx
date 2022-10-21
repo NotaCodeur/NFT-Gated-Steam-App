@@ -58,7 +58,7 @@ const ContentSection = ({ state, dispatch, stateTwo, dispatchTwo }) => {
                     //  paddingTop: '100px', 
                     paddingBottom: '100px'
                 }}>
-                    <Col xs={22} sm={12} md={6} lg={6} xl={6}>
+                    <Col xs={18} sm={12} md={8} lg={6} xl={6}>
 
                         <Card
                             hoverable

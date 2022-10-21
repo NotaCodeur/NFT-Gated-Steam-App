@@ -916,8 +916,8 @@ function App() {
             console.log('Utxos: ', stateTwo.Utxos)
             stateTwo.Utxos?.map((Utxo) => {
                 console.log('Utxo in map: ', Utxo)
-                if (Utxo?.multiAssetStr?.includes('NMKR')) {
-                    console.log('Utxo includes NMKR Yay!, set hasNFT to true')
+                if (Utxo?.multiAssetStr?.includes('hologif')) {
+                    console.log('Utxo includes hologif Yay!, set hasNFT to true')
                     userHasNFT = true
                 }
             })
