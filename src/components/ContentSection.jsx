@@ -77,7 +77,7 @@ const ContentSection = ({ state, dispatch, stateTwo, dispatchTwo }) => {
                                 holoman
                             </h3>
                             <br />
-                            <button className='buyNFTButton'>
+                            <button className='buyNFTButton' onClick={() => window.open('https://holoman.netlify.app/')} target="_blank">
                                 <h3 className='buyNFTButtonText'  >
                                     Get access
                                 </h3>

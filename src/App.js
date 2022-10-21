@@ -920,6 +920,10 @@ function App() {
                     console.log('Utxo includes hologif Yay!, set hasNFT to true')
                     userHasNFT = true
                 }
+                if (Utxo?.multiAssetStr?.includes('NMKR')) {
+                    console.log('Utxo includes hologif Yay!, set hasNFT to true')
+                    userHasNFT = true
+                }
             })
         }
         if (stateTwo.hasNFT !== userHasNFT) {

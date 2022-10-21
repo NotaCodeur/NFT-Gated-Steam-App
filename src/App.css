@@ -167,6 +167,46 @@ a {
   }
 }
 
+.connectWalletButton {
+  font-family: Inter, sans-serif;
+
+  /* font-family: 'Permanent Marker'; */
+  font-size: 20px;
+  /* margin: 10; */
+  color: #ffffff;
+  background: linear-gradient(-45deg, #d1d1ef, #9198ac, #e9c8d4, #9c8489);
+  background-size: 300%;
+
+  /* background-color: #93f9e6a9; */
+  border-color: white;
+  backdrop-filter: blur(6px);
+
+  border-radius: 40px;
+
+  margin-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  box-shadow: 4px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 4px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 6px 3px 0px rgba(0, 0, 0, 0.75);
+
+  animation: animated_text 4s ease-in-out infinite;
+  -moz-animation: animated_text 4s ease-in-out infinite;
+  -webkit-animation: animated_text 4s ease-in-out infinite;
+}
+
+.connectWalletButton:hover {
+  background-color: #f9c6cb48;
+
+}
+
+.connectWalletButton:active {
+  background-color: #f9c6cb4b;
+}
+
 
 .heroSection {}
 
